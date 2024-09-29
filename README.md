@@ -14,7 +14,7 @@ Esercizi di laboratorio di Calcolo Numerico
 ```
 
 - Nella variabile ans troviamo il risultato dell'ultima operazione digitata.
-- Matlab è ottimizzato per il calcolo matriciale e tutti i dati vengono visti come matrici (vedi commenti Esercizio_02.m, spiegano bene le differenze tra C e MatLab).
+- Matlab è ottimizzato per il calcolo matriciale e tutti i dati vengono visti come matrici (vedi commenti Esercizio_0_2.m, spiegano bene le differenze tra C e MatLab).
 
 * Non è possibile sommare vettori di dimensioni differenti: la somma, differenza e la differenza sono calcolate componente per componente.
   Il prodotto tra due matrici corrisponde al loro prodotto scalare.
