@@ -136,7 +136,15 @@ end
 
 # M-function
 
+Il nome della funzione deve avere lo stesso nome del file e può essere preceduta solamnente da commenti.
+
+Non è più obbligatorio chiudere una function con un end --> la best practice del corso consiglia di inserire l'end finale.
+
 Le function di per se non dovrebbero mai avere interazioni con l'utente.
+
+Tutti i parametri in input ad una risorsa sono passati per valori, quindi in RAM avrò la copia delle variabili in input come parametri della funzione, potrebbe essere dispendioso in certi casi.
+
+Ci sono dei metodi per passare i parametri delle funzioni per riferimento.
 
 ```matlab
 function [x1, x2] = roots_deg2(a, b, c)
