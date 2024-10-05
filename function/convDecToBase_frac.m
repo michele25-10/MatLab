@@ -4,8 +4,13 @@ function [convertedFrac] = convDecToBase_frac(fracToBeConverted, newBase, limit)
 
 digits = ['0':'9' 'A':'Z' 'a':'z' '!':'/']; 
 
-if((fracToBeConverted == fix(fracToBeConverted)) || fracToBeConverted < 0)
+if(fracToBeConverted < 0)
     error("fracToBeConverted deve essere un numero frazionario positivo"); 
+end
+
+if(fracToBeConverted == fix(fracToBeConverted))
+    convertedFrac = "0.0";
+    return; 
 end
 
 if(~isnumeric(newBase) || (newBase ~= fix(newBase)) ...
