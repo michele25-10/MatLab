@@ -53,26 +53,26 @@ fprintf("il valore di a: %f", a)
 x = input("Inserisci il valore della variabile x:\n");
 
 %STRUCT --> per accedere ad un campo della struttura S.Nome
-S = struct(’Nome’, ’Cleve’, ...
-            ’Cognome’, ’Moler’, ...
-            ’Anno’, 1939);
+S = struct('Nome', 'Cleve', ...
+            'Cognome', 'Moler', ...
+            'Anno', 1939);
 %Modificare i valori
-S.Nome = ’Jack’;
-S.Cognome = ’Little’;
+S.Nome = 'Jack';
+S.Cognome = 'Little';
 S.Anno = 1956;
 
-%Si possono creare vettori di strutture, sfruttando l’allocazione dinamica della memoria di Matlab.
-S(1).Nome = ’Frank’;
-S(1).Cognome = ’Herbert’;
+%Si possono creare vettori di strutture, sfruttando l'allocazione dinamica della memoria di Matlab.
+S(1).Nome = 'Frank';
+S(1).Cognome = 'Herbert';
 S(1).Anno = 1920;
-S(2).Nome = ’Isaac’;
-S(2).Cognome = ’Asimov’;
+S(2).Nome = 'Isaac';
+S(2).Cognome = 'Asimov';
 S(2).Anno = 1920;
 
 %CELL ARRAY
 %I cell array sono particolari tipi di dato che possono contenere dati di qualsiasi tipo. La creazione di questo tipo di dato segue una notazione vettoriale.
 A = cell(2,2); % Viene inizializato il cell array
-A{1,1} = ’ciao’; % elemento di posto 1,1
+A{1,1} = 'ciao'; % elemento di posto 1,1
 A{1,2} = 4; % elemento di posto 1,2
 A{2,1} = [1,2]; % elemento di posto 2,1
 A{2,2} = [4;3]; % elemento di posto 2,2
@@ -148,7 +148,7 @@ Ci sono dei metodi per passare i parametri delle funzioni per riferimento.
 
 ```matlab
 function [x1, x2] = roots_deg2(a, b, c)
-%ROOTS_DEG2 - Calcolo delle soluzioni dell’eq. di II grado.
+%ROOTS_DEG2 - Calcolo delle soluzioni dell'eq. di II grado.
 % SINTASSI: [x1, x2] = roots_deg2(a, b, c)
 % INPUT: a, b, c (coefficienti)
 % OUTPUT: x1, x2 (soluzioni)
@@ -156,18 +156,18 @@ x1 = []; x2 = []; % le variabili di output sono inizializzate vuote
 Delta = b^2 - 4*a*c; % calcolo del discriminante
 switch sign(Delta)
     case -1
-        fprintf(’L’’eq. non ha soluzioni reali.\n’)
+        fprintf('L''eq. non ha soluzioni reali.\n')
         return; % uscita dalla funzione
     case 0
-        fprintf(’L’’eq. ha due soluzioni reali coincidenti:\n’)
+        fprintf('L''eq. ha due soluzioni reali coincidenti:\n')
         x1 = -b/(2*a);
         x2 = x1;
-        fprintf(’ x1 = x2 = %f \n’, x1);
+        fprintf(' x1 = x2 = %f \n', x1);
     case 1
-        fprintf(’L’’eq. ha due soluzioni reali distinte:\n’)
+        fprintf('L''eq. ha due soluzioni reali distinte:\n')
         x1 = (-b - sqrt(Delta))/(2*a);
         x2 = (-b + sqrt(Delta))/(2*a);
-        fprintf(’ x1 = %f \n x2 = %f \n’, x1, x2);
+        fprintf(' x1 = %f \n x2 = %f \n', x1, x2);
 end % termine del costrutto switch
 end % termine della M-function
 ```
@@ -175,7 +175,7 @@ end % termine della M-function
 Si osservi che le variabili a, b e c non vengono modificate: il passaggio delle variabili
 alle M-functions viene effettuato per valore, non per indirizzo.
 Il workspace contenente le variabili utilizzate dalle M-functions è temporaneo e viene
-liberato quando termina l’esecuzione delle istruzioni contenute nella M-function (le
+liberato quando termina l'esecuzione delle istruzioni contenute nella M-function (le
 variabili non passate in output vengono eliminate).
 
 # Grafica 2D
