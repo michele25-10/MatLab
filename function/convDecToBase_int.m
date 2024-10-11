@@ -10,8 +10,14 @@ function [convertedInt, varargout] = convDecToBase_int(intToBeConverted, varargi
 
 digits = ['0':'9' 'A':'Z' 'a':'z' '!':'/']; 
 newBase = 16; %default value
+verbosity=0; 
 if(nargin > 1)
-    newBase = varargin{1}
+    if (~isempty(varargin{1}))
+        newBase = varargin{1}
+    end
+    if(nargin > 2)
+        verbosity = varargin{2}
+    end
 end
 
 if(~isnumeric(intToBeConverted) ...
@@ -24,22 +30,38 @@ if(~isnumeric(newBase) || (newBase ~= fix(newBase)) ...
     error("newBase deve essere un numero compreso tra 2 e %d", numel(digits)); 
 end
 
+if(verbosity > 0)
+    fprintf("\nconvDecToBase: Initialization..."); 
+end
+
 q = intToBeConverted; 
 convertedInt =""; 
-
 if (nargout > 1)
     maxdigits = 100; 
     QuotRes = zeros(maxdigits, 2);  
 end
-k=1; 
+k=0; 
+
+if(verbosity>0)
+    fprintf("\nconvDecToBase_int: entering the while loop..."); 
+end
 while q ~= 0
+    k = k + 1; 
     r = q - fix(q/newBase) * newBase;
     q = fix(q / newBase); 
     if(nargout > 1)
         QuotRes(k, :) = [q, r]; 
     end
     convertedInt = strcat(digits(r+1), convertedInt); 
-    k = k + 1; 
+
+    if(verbosity>1)
+        fprintf("\nconvDecToBase_int: %s = %d, %s = %d, %s = %d", ...
+            "iteration", k, "quotient", q, "remainder", r); 
+    end
+end
+
+if(verbosity > 0)
+    fprintf("\nconvDecToBase_int: finalization and return\n"); 
 end
 if (nargout > 1)
     if (k < maxdigits)
