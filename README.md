@@ -172,6 +172,22 @@ end % termine del costrutto switch
 end % termine della M-function
 ```
 
+Parametri opzionali (vanno dopo i parametri obbligatori) nelle funzioni:
+
+```matlab
+function [out1, out2, varargout] = myFunc(in1, in2, varargin)
+...
+end
+
+[a, b, c, d] = myFunc(A, B, R, S, T);
+%varargout{1}=c     varargin{1}=R
+%varargout{2}=d     varargin{2}=S
+%                   varargin{3}=T
+
+%nargout --> numero di parametro in out (conta anche quelli obbligatori)
+%nargin --> numero di parametri in input
+```
+
 Si osservi che le variabili a, b e c non vengono modificate: il passaggio delle variabili
 alle M-functions viene effettuato per valore, non per indirizzo.
 Il workspace contenente le variabili utilizzate dalle M-functions è temporaneo e viene
