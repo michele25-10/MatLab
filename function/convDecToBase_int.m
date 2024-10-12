@@ -13,10 +13,10 @@ newBase = 16; %default value
 verbosity=0; 
 if(nargin > 1)
     if (~isempty(varargin{1}))
-        newBase = varargin{1}
+        newBase = varargin{1}; 
     end
     if(nargin > 2)
-        verbosity = varargin{2}
+        verbosity = varargin{2}; 
     end
 end
 
