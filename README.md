@@ -194,4 +194,53 @@ Il workspace contenente le variabili utilizzate dalle M-functions è temporaneo 
 liberato quando termina l'esecuzione delle istruzioni contenute nella M-function (le
 variabili non passate in output vengono eliminate).
 
+Le function_handle sono definite nel seguente modo:
+
+```matlab
+h = @(t, theta)( sin(t) + theta )
+```
+
+Quest'ultime possono anche essere inserite come argomento di una funzione ad esempio fplot.
+In quel caso sono function_handle anonime ovvero nascoste nel workspace, non è richiamabile singolarmente.
+
+# Matrici sparse
+
+Quando il numero di elementi diversi da 0 non supera il numero di m (righe) o n (colonne).
+Anche per le matrici sparse vale il discorso dell'allocazione dinamica.
+Viene memorizzata in RAM (CSC):
+
+- Un vettore di double che contiene tutti i vettori diversi da 0
+- Un vettore di interi che contiene gli indici di riga di tutti gli elementi diversi da 0
+- La colonna è un vettore di puntatore (1xn) che punta alla cella del primo valore di ogni colonna se la colonna è vuota allora punta alla colonna precedente, se il puntatore si ripete allora vuol dire che la colonna è di tutti 0.
+
+Come noi istanziamo una matrice sparsa (COO):
+
+- Dobbiamo inserire il valore dell'elemento
+- L'indice della colonna
+- L'indice della riga
+
+Le operazioni sulle matrici sparse vengono eseguite in modo speciale attraverso l'indirizzamento indicizzato.
+Usiamo una aritmentica sparsa.
+
+comandi:
+
+```matlab
+M = sparse(i, j, m, nMax)
+
+S = spdiags(B, d, m, n)
+
+speye(m, n)
+
+sprand(m, n, d, rc)
+```
+
+# Leggere dati da un file binari
+
+```matlab
+fid = fopen(filename, "rw")
+
+[A, count] = fread(fid, num, precision, skip)
+count = fwrite(fid, A, precision, skip);
+```
+
 # Grafica 2D
