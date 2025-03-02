@@ -243,4 +243,22 @@ fid = fopen(filename, "rw")
 count = fwrite(fid, A, precision, skip);
 ```
 
-# Grafica 2D
+# Grafica 3D
+
+```matlab
+[X, Y, Z] = peaks();
+
+surf(X, Y, Z)       %colora la superfice
+mesh(X, Y, Z)       %Mostra solo la rete delle x e y mossa dalle z
+surfc(X, Y, Z)      %Mostra la superficie e riflesso sul pavimento x, y il contour
+contour(X, Y, Z)    %Mostra su due punti le aree delle reti con punti di somiglianza (es. dislivello di un terreno)
+pcolor(X, Y, Z)     %Mostra una griglia 2D e poi colora le aree dentro la griglia attraverso i valori delle z nello spazio
+
+%Modificare la vista del grafico ruota sull'asse z e ruota l'angolo di visione (altezza sopra sotto).
+view(-140, 60);
+
+```
+
+Crea una griglia prima di intersezione tra X e Y nei punti di intersezione tra gli elementi, dopo di chè le innalza attraverso l'uso delle Z.
+Questo consente di creare grafici 3D attraverso l'uso di griglie prevalentemente rettangolari.
+La colorazione della rete varia in genere in base al numero delle x contenute all'interno di quel rettangolo della rete.
